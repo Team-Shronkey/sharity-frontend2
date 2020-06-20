@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import NavBar from "./components/navBar";
+import { Route, Switch, Redirect } from "react-router-dom";
+import nonfinDon from "./components/nonfinDon";
+import finDon from "./components/finDon";
+import homePage from "./components/home";
+import about from "./components/about";
+import login from "./components/login";
+import healthcarePage from "./components/healthcare";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar />
+
+      <div className="content">
+        <Switch>
+          <Route path="/non-financial-donations" component={nonfinDon} />
+          <Route
+            path="/financial-donations/healthcare"
+            component={healthcarePage}
+          />
+          <Route path="/financial-donations" component={finDon} />
+          <Route path="/about" component={about} />
+          <Route path="/login" component={login} />
+          <Route path="/home" component={homePage} />
+          <Redirect from="/" exact to="/home" />
+          <Redirect to="/notfound" />
+        </Switch>
+      </div>
     </div>
   );
 }
