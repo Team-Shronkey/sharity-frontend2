@@ -3,11 +3,20 @@ import { Redirect } from "react-router-dom";
 
 class healthcarePage extends Component {
   state = {
-    categories: [],
+    selection: [
+      { id: "1", amount: "$10", description: "A box of medical masks" },
+      { id: "2", amount: "$20", description: "1 testing kit" },
+      { id: "3", amount: "$50", description: "Support Clinical Research" },
+      { id: "4", amount: "Custom", description: "Set a custom amount" },
+    ],
   };
 
   handleClick = () => {
     console.log("Click");
+  };
+
+  paymentSelected = (amount) => {
+    console.log("Payment Selected", amount);
   };
 
   render() {
@@ -16,7 +25,7 @@ class healthcarePage extends Component {
         <div className="bgimgHC">
           <div class="container">
             <div class="carousel-caption text-left" style={{ left: "15px" }}>
-              <h1>Healthcare</h1>
+              <h1>Covid Vaccine Response Fund</h1>
             </div>
           </div>
         </div>
@@ -31,30 +40,27 @@ class healthcarePage extends Component {
         <div>
           <h1>Donate</h1>
         </div>
-        <div class="container">
-          <div class="row justify-content-around">
-            <div class="col-4">
-              <button type="button" class="btn btn-outline-primary">
-                $10
-              </button>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-outline-primary">
-                $20
-              </button>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-outline-primary">
-                $30
-              </button>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-outline-primary">
-                Custom
-              </button>
-            </div>
+        <div className="container">
+          <div className="row justify-content-around card-deck mb-3">
+            {this.state.selection.map((selected) => (
+              <div className="col-3">
+                {" "}
+                <div className="card box-shadow">
+                  <div className="my-0 card header font-weight-bold ">
+                    {selected.description}
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-lg btn-block btn-outline-primary"
+                    onClick={this.paymentSelected}
+                  >
+                    {selected.amount}
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>{" "}
-          <div className="input-group mb-2">
+          <div className="input-group mb-2 mt-4">
             <div className="input-group-prepend">
               <div className="input-group-text">
                 <input

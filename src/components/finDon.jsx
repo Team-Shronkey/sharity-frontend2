@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 
 class finDon extends Component {
   state = {
-    categories: [],
+    category: [],
   };
 
   handleClick = () => {
@@ -170,7 +170,12 @@ class finDon extends Component {
                 </div>
               </div>
               <div className="col-md-3 mt-3">
-                <Link to="/financial-donations/healthcare">
+                <Link
+                  to="/causes"
+                  onClick={this.handleClick}
+                  donations={this.state.donations}
+                  category={this.state.category}
+                >
                   <div
                     className="card mb-4 shadow-sm text-center clickable"
                     style={{

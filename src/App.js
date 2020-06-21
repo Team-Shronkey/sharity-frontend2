@@ -8,6 +8,7 @@ import homePage from "./components/home";
 import about from "./components/about";
 import login from "./components/login";
 import healthcarePage from "./components/healthcare";
+import Causes from "./components/causes";
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
         <Switch>
           <Route path="/non-financial-donations" component={nonfinDon} />
           <Route
-            path="/financial-donations/healthcare"
+            path="/causes/covid-vaccine-response-fund"
             component={healthcarePage}
           />
           <Route path="/financial-donations" component={finDon} />
           <Route path="/about" component={about} />
           <Route path="/login" component={login} />
           <Route path="/home" component={homePage} />
+          <Route path="/causes" component={Causes} />
           <Redirect from="/" exact to="/home" />
           <Redirect to="/notfound" />
         </Switch>
