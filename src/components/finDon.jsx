@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class finDon extends Component {
   state = {
@@ -8,11 +8,6 @@ class finDon extends Component {
 
   handleClick = () => {
     console.log("Click");
-  };
-
-  handleHealthcareClick = () => {
-    console.log("Healthcare");
-    return <Redirect to="/financial-donations/healthcare/" />;
   };
 
   render() {
@@ -175,29 +170,30 @@ class finDon extends Component {
                 </div>
               </div>
               <div className="col-md-3 mt-3">
-                <div
-                  className="card mb-4 shadow-sm text-center clickable"
-                  onClick={this.handleHealthcareClick}
-                  style={{
-                    width: "12rem",
-                    height: "12rem",
-                    backgroundColor: "#FFFFFF",
-                    color: "#042c59",
-                    borderColor: "#F5F5F5",
-                    borderWidth: "2px",
-                    borderRadius: "1.5rem",
-                  }}
-                >
-                  <div>
-                    <img
-                      className="mt-4"
-                      width="60em"
-                      height="60em"
-                      src={require("../icons/icons8-medical-heart-50.png")}
-                    />
+                <Link to="/financial-donations/healthcare">
+                  <div
+                    className="card mb-4 shadow-sm text-center clickable"
+                    style={{
+                      width: "12rem",
+                      height: "12rem",
+                      backgroundColor: "#FFFFFF",
+                      color: "#042c59",
+                      borderColor: "#F5F5F5",
+                      borderWidth: "2px",
+                      borderRadius: "1.5rem",
+                    }}
+                  >
+                    <div>
+                      <img
+                        className="mt-4"
+                        width="60em"
+                        height="60em"
+                        src={require("../icons/icons8-medical-heart-50.png")}
+                      />
+                    </div>
+                    <h5 className="card-title mt-4">Healthcare</h5>
                   </div>
-                  <h5 className="card-title mt-4">Healthcare</h5>
-                </div>
+                </Link>
               </div>
               <div className="col-md-3 mt-3">
                 <div
